@@ -13,8 +13,7 @@ IMAGE_SUFFIX        = ['jpeg', 'jpg']  # 图片格式列表
 BLACK_DIR_LIST      = []  # 不参与处理的目录
 
 # 显示文本信息
-SHOW_TEXT = u"""
-相机: %(camera)s
+SHOW_TEXT = u"""相机: %(camera)s
 镜头: %(lens)s
 光圈: %(aperture)s
 快门: %(shutterspeed)s
@@ -41,9 +40,10 @@ def check_is_image(f_name):
 
 def check_white_or_black(image):
     """ 判断图片给白字还是给黑字 """
-    image.getcolors()
-    rgb_start = image.getcolors()[0]
-    rgb_end = image.getcolors()[-1]
+    colors = image.getcolors(maxcolors=99999)
+    print(colors)
+    rgb_start = colors[0]
+    rgb_end = colors[-1]
     rgb_start_color,rgb_end_color = rgb_start[1],rgb_end[1]
     rgb_start_int,rgb_end_int = rgb_start[0],rgb_end[0]
 
@@ -91,6 +91,8 @@ def do_write(source, dest, font_name=None, font_size=40, quality=50):
     show_text = SHOW_TEXT % exif_info
 
     image = Image.open(source)
+    # color = check_white_or_black(image)
+    color = None
     draw = ImageDraw.Draw(image)
 
     if font_name:
@@ -98,9 +100,14 @@ def do_write(source, dest, font_name=None, font_size=40, quality=50):
     else:
         font = None
 
-    
+    if color == 'Black':
+        font_color = (0,0,0)
+    elif color == 'White':
+        font_color = (255,255,255)
+    else:
+        font_color = FONT_COLOR
 
-    draw.text(START_POSITION, show_text, FONT_COLOR, font=font)
+    draw.text(START_POSITION, show_text, font_color, font=font)
     image.save(dest, quality=quality)
 
 
