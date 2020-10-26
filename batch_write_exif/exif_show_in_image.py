@@ -39,6 +39,27 @@ def check_is_image(f_name):
     return False
 
 
+def check_white_or_black(image):
+    """ 判断图片给白字还是给黑字 """
+    image.getcolors()
+    rgb_start = image.getcolors()[0]
+    rgb_end = image.getcolors()[-1]
+    rgb_start_color,rgb_end_color = rgb_start[1],rgb_end[1]
+    rgb_start_int,rgb_end_int = rgb_start[0],rgb_end[0]
+
+    print(rgb_start,rgb_end)
+    if rgb_start_int > rgb_end_int:
+        if rgb_start_color == 0 or rgb_start_color == (0, 0, 0):
+            return "White"
+        else:
+            return "Black"
+    else:
+        if rgb_start_color == 255 or rgb_start_color == (255, 255, 255):
+            return "Black"
+        else:
+            return "White"    
+
+
 def get_exif_info(tags):
     brand = tags.get('Image Make', '')  # 相机品牌
     model = tags.get('Image Model', '')  # 相机型号
@@ -76,6 +97,8 @@ def do_write(source, dest, font_name=None, font_size=40, quality=50):
         font = ImageFont.truetype(font_name, font_size, encoding="unic")
     else:
         font = None
+
+    
 
     draw.text(START_POSITION, show_text, FONT_COLOR, font=font)
     image.save(dest, quality=quality)
