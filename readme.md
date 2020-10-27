@@ -20,6 +20,13 @@
 $ pip install exifread
 ```
 
+- Function
+
+```python
+with open(source_path, 'rb') as f:
+    tags = exifread.process_file(f)
+```
+
 - `tags`信息对照
 
 | Tag Name             | Description | Note                      |
