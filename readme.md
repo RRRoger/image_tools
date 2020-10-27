@@ -43,6 +43,17 @@ $ pip install Pillow
 
 - ***根据图片亮度自动识别出插入的字体颜色***
 
+- **命令**:
+
+```bash
+python image_tools/batch_insert_exif/exif_show_in_image.py {需要执行操作的图片目录}
+
+# demo
+python image_tools/batch_insert_exif/exif_show_in_image.py /Users/chenpeng/Pictures/test_write_exif
+```
+
+​    
+
 - 处理后效果
 
 ![](./images/after_exif_setting/DSC05247-21.JPG)

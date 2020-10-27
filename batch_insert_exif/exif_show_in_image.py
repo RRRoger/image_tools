@@ -2,6 +2,7 @@
  
 import exifread
 import os
+import sys
 from PIL import ImageFont, ImageDraw, Image, ImageStat
 
 FONT = "SourceHanSansCN-Normal.otf"                # 思源字体
@@ -157,7 +158,9 @@ def main(dir_path):
 
 
 if __name__ == '__main__':
-    main(dir_path="../test_insert_exif")
+    dir_path = sys.argv[1]
+    if dir_path == '/': raise OSError
+    main(dir_path=dir_path)
 
 
 
