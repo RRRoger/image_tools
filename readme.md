@@ -33,3 +33,10 @@ $ pip install exifread
 $ pip install PIL
 ```
 
+- 效果
+
+![](./images/after_exif_setting/DSC05247-21.JPG)
+
+![](./images/after_exif_setting/IMG_9325.JPG)
+
+
