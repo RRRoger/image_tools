@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import exifread
 
 def get_exif_info(tags):

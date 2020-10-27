@@ -1,0 +1,5 @@
+ExifRead==2.3.1
+
+# You can use the environment markers to achieve this in requirements.txt since pip 6.0
+Pillow==6.2.2; python_version <= '2.7'
+Pillow==8.0.1; python_version > '3.5'

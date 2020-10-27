@@ -1,2 +1,2 @@
 from . import exif_read
-from . import batch_write_exif
+from . import batch_insert_exif

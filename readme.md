@@ -1,10 +1,20 @@
 # 图片处理工具
 
 > 整理图片处理工具
+>
+> - 请提前装好[思源字体](https://source.typekit.com/source-han-serif/cn/)(可**免费商用**)
+>   - [https://source.typekit.com/source-han-serif/cn/](https://source.typekit.com/source-han-serif/cn/)
+> - 安装依赖的python库
+>   - `pip install -r requirements.txt`
+
 
 ## 1. 获取图片exif信息
 
-- 使用第三方库
+> 参考链接: https://www.biaodianfu.com/exif-python.html
+> Exif（Exchangeable image file format）是专门为数码相机的照片设定的，可以记录数码照片的属性信息和拍摄数据。
+> Exif信息是镶嵌在 JPEG/TIFF 图像文件格式内的一组拍摄参数，它就好像是傻瓜相机的日期打印功能一样，只不过 Exif信息所记录的资讯更为详尽和完备。
+
+- 使用第三方库 `exifread`
 
 ```bash
 $ pip install exifread
@@ -22,21 +32,21 @@ $ pip install exifread
 | EXIF ISOSpeedRatings | iso         |                           |
 | EXIF LensModel       | 镜头信息    |                           |
 |                      |             |                           |
-|                      |             |                           |
-|                      |             |                           |
 
 ## 2. 批量写入exif信息到图片里
 
-- 使用第三方库
+- 使用第三方库 `Pillow`
 
 ```bash
-$ pip install PIL
+$ pip install Pillow
 ```
 
-- 效果
+- ***根据图片亮度自动识别出插入的字体颜色***
+
+- 处理后效果
 
 ![](./images/after_exif_setting/DSC05247-21.JPG)
 
-![](./images/after_exif_setting/IMG_9325.JPG)
+![](./images/after_exif_setting/IMG_9468.JPG)
 
 
