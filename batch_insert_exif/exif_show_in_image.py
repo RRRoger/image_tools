@@ -57,14 +57,14 @@ def check_is_image(f_name):
 
 def get_exif_info(tags):
     """ 获取EXIF具体信息 """
-    brand = tags.get('Image Make', '')  # 相机品牌
-    model = tags.get('Image Model', '')  # 相机型号
-    date = tags.get('Image DateTime', '')  # 拍摄时间
-    shutterspeed = tags.get('EXIF ExposureTime', '')  # 快门
-    focallength = tags.get('EXIF FocalLength', '')  # 使用焦段
-    aperture = tags.get('EXIF FNumber', '')  # 光圈
-    iso = tags.get('EXIF ISOSpeedRatings', '')  # iso
-    lens = tags.get('EXIF LensModel', '')  # 镜头信息
+    brand = tags.get('Image Make', '')                 # 相机品牌
+    model = tags.get('Image Model', '')                # 相机型号
+    date = tags.get('Image DateTime', '')              # 拍摄时间
+    shutterspeed = tags.get('EXIF ExposureTime', '')   # 快门
+    focallength = tags.get('EXIF FocalLength', '')     # 使用焦段
+    aperture = tags.get('EXIF FNumber', '')            # 光圈
+    iso = tags.get('EXIF ISOSpeedRatings', '')         # iso
+    lens = tags.get('EXIF LensModel', '')              # 镜头信息
     aperture = format_aperture(aperture)
 
     return {
