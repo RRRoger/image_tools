@@ -1,5 +1,12 @@
 # 图片处理工具
 
+[![](https://img.shields.io/badge/version-python2.7+-green?style=flat-square)](https://www.python.org/downloads/)
+[![](https://img.shields.io/badge/version-python3.5+-green?style=flat-square)](https://www.python.org/downloads/)
+[![GitHub last commit](https://img.shields.io/github/stars/RRRoger/image_tools.svg?style=flat-square)](https://github.com/RRRoger/image_tools)
+[![GitHub issues](https://img.shields.io/github/issues/RRRoger/image_tools.svg?style=flat-square)](https://github.com/RRRoger/image_tools/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/RRRoger/image_tools.svg?style=flat-square)](https://github.com/RRRoger/image_tools/commits/master)
+[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/RRRoger/image_tools/blob/master/LICENSE)
+
 > 整理图片处理工具
 >
 > - 请提前装好[思源字体](https://source.typekit.com/source-han-serif/cn/)(可**免费商用**)
@@ -66,5 +73,4 @@ python image_tools/batch_insert_exif/exif_show_in_image.py /Users/chenpeng/Pictu
 ![](./images/after_exif_setting/DSC05247-21.JPG)
 
 ![](./images/after_exif_setting/IMG_9468.JPG)
-
 

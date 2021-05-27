@@ -5,7 +5,7 @@
 > - 源代码：https://github.com/RRRoger/image_tools
 >- 适用python版本：python2.7+ , python3.5+
 > - 请提前装好[思源字体](https://source.typekit.com/source-han-serif/cn/)(可**免费商用**)
->  - [https://source.typekit.com/source-han-serif/cn/](https://source.typekit.com/source-han-serif/cn/)
+>    - [https://source.typekit.com/source-han-serif/cn/](https://source.typekit.com/source-han-serif/cn/)
 > - 安装依赖的python库
 >   - `pip install -r requirements.txt`
 
