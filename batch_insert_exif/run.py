@@ -161,7 +161,7 @@ help_font = f"选择字体, 默认: {FONT}"
 @click.option("-p", "--images-dir", "images_dir", help=help_p, type=str, required=True)
 @click.option("-q", "--quality", "quality", help=help_q, type=int, required=False, default=QUALITY)
 @click.option("-fs", "--font-size", "font_size", help=help_fs, type=int, required=False, default=FONT_SIZE)
-@click.option("-font", "--font", "font", help=help_font, type=str, required=False, default=FONT)
+@click.option("-font", "--font", "font_name", help=help_font, type=str, required=False, default=FONT)
 def main(images_dir, quality, font_size, font_name):
     dir_after = os.path.join(images_dir, DIR_AFTER)
     mkdir_safe(dir_after)
