@@ -1,6 +1,5 @@
 # 图片处理工具
 
-[![](https://img.shields.io/badge/version-python2.7+-green?style=flat-square)](https://www.python.org/downloads/)
 [![](https://img.shields.io/badge/version-python3.5+-green?style=flat-square)](https://www.python.org/downloads/)
 [![GitHub last commit](https://img.shields.io/github/stars/RRRoger/image_tools.svg?style=flat-square)](https://github.com/RRRoger/image_tools)
 [![GitHub issues](https://img.shields.io/github/issues/RRRoger/image_tools.svg?style=flat-square)](https://github.com/RRRoger/image_tools/issues)
@@ -60,10 +59,12 @@ $ pip install Pillow
 - **命令**:
 
 ```bash
-python image_tools/batch_insert_exif/exif_show_in_image.py {需要执行操作的图片目录}
+cd image_tools/batch_insert_exif
+# for help
+python run -h
 
 # demo
-python image_tools/batch_insert_exif/exif_show_in_image.py /Users/chenpeng/Pictures/test_write_exif
+python run.py -p  /Users/chenpeng/Pictures/test_write_exif
 ```
 
 ​    
