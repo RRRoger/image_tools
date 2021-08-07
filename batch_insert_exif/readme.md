@@ -3,7 +3,7 @@
 > 自己有这么一个需求，在照片显示光圈，iso以及快门信息，并且需要批量操作并且后面经常用到得到。为什么不自己写个脚本来实现，说干就干。
 >
 > - 源代码：https://github.com/RRRoger/image_tools
->- 适用python版本：python2.7+ , python3.5+
+>- 适用python版本：only python3.5+
 > - 请提前装好[思源字体](https://source.typekit.com/source-han-serif/cn/)(可**免费商用**)
 >    - [https://source.typekit.com/source-han-serif/cn/](https://source.typekit.com/source-han-serif/cn/)
 > - 安装依赖的python库
@@ -59,10 +59,12 @@ $ pip install Pillow
 
 
 ```bash
-python image_tools/batch_insert_exif/exif_show_in_image.py {需要执行操作的图片目录}
+cd image_tools/batch_insert_exif
+# for help
+python run -h
 
 # demo
-python image_tools/batch_insert_exif/exif_show_in_image.py /Users/chenpeng/Pictures/test_write_exif
+python run.py -p  /Users/chenpeng/Pictures/test_write_exif
 ```
 
 - 根据照片亮度自动识别文字颜色

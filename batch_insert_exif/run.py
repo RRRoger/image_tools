@@ -1,9 +1,25 @@
 # -*- coding: utf-8 -*-
- 
+
+"""
+\b
+* * * * * * * * * * * * * * * * * * * * * * * * *
+批量写入照片Exif信息
+
+
+\b 
+Author: Roger;
+Python Version: python 3.7+;
+Python Libraries:
+    click: https://click-docs-zh-cn.readthedocs.io/zh/latest/
+    exifread: https://pypi.org/project/ExifRead/
+    Pillow: https://pillow.readthedocs.io/en/stable/
+* * * * * * * * * * * * * * * * * * * * * * * * *
+"""
+
+from PIL import ImageFont, ImageDraw, Image, ImageStat
 import exifread
 import os
-import sys
-from PIL import ImageFont, ImageDraw, Image, ImageStat
+import click
 
 FONT = "SourceHanSansCN-Normal.otf"                # 思源字体
 QUALITY = 30                                       # 导出图片质量
@@ -40,10 +56,8 @@ def format_aperture(val):
 
 def mkdir_safe(_path):
     """make dir if exists then pass"""
-    try:
+    if not os.path.exists(_path):
         os.mkdir(_path)
-    except OSError:
-        pass
     return _path
 
 
@@ -102,7 +116,7 @@ def judge_font_color(img):
 
 def do_write(source, dest, font_name=None, font_size=40, quality=50):
     
-    print("********** Insert EXIF Info: %s ************" % dest)
+    print(f"********** Insert EXIF Info: {dest} ************")
 
     with open(source, 'rb') as f:
         tags = exifread.process_file(f)
@@ -124,20 +138,32 @@ def do_write(source, dest, font_name=None, font_size=40, quality=50):
     elif color == 'White':
         font_color = COLOR_WHITE
     else:
-        font_color = FONT_COLOR
+        font_color = COLOR_WHITE
 
     draw.text(START_POSITION, show_text, font_color, font=font)
     image.save(dest, quality=quality)
 
 
-def main(dir_path):
-    dir_after = os.path.join(dir_path, DIR_AFTER)
+help_c = __doc__
+help_p = "修改处理的图片路径"
+help_q = f"导出的图片质量, 默认: {QUALITY}"
+help_fs = f"字体大小, 默认: {FONT_SIZE}"
+help_font = f"选择字体, 默认: {FONT}"
 
+
+@click.command()
+@click.help_option("-h", "--help", help=help_c)
+@click.option("-p", "--images-dir", "images_dir", help=help_p, type=str, required=True)
+@click.option("-q", "--quality", "quality", help=help_q, type=int, required=False, default=QUALITY)
+@click.option("-fs", "--font-size", "font_size", help=help_fs, type=int, required=False, default=FONT_SIZE)
+@click.option("-font", "--font", "font", help=help_font, type=str, required=False, default=FONT)
+def main(images_dir, quality, font_size, font):
+    dir_after = os.path.join(images_dir, DIR_AFTER)
     mkdir_safe(dir_after)
 
     print("************* Start *************")
 
-    for root, dirs, files in os.walk(dir_path):
+    for root, dirs, files in os.walk(images_dir):
         
         # 忽略AFTER目录;以及其他自定义目录
         if root in [dir_after] + BLACK_DIR_LIST: continue
@@ -147,20 +173,18 @@ def main(dir_path):
             # 判断文件是否是图片
             if not check_is_image(f_name): continue
 
-            f_path = os.path.join(dir_path, f_name)  # 源文件路径
+            f_path = os.path.join(images_dir, f_name)  # 源文件路径
             dest_path = os.path.join(dir_after, f_name)  # 目标文件路径
 
             # 调用处理图片函数
-            do_write(f_path, dest_path, font_name=FONT, font_size=FONT_SIZE, quality=QUALITY)
+            do_write(f_path, dest_path, font_name=font, font_size=font_size, quality=quality)
 
     print("************* End *************")
     return "OK"
 
 
 if __name__ == '__main__':
-    dir_path = sys.argv[1]
-    if dir_path == '/': raise OSError
-    main(dir_path=dir_path)
+    main()
 
 
 

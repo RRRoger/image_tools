@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import sys,os
+path = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+sys.path.append(path)
+
+
 from PIL import Image, ImageStat
 import math
-im = Image.open("image_tools/test_insert_exif/IMG_9477.JPG")
-from ..base_tools.time_cost import time_cost
+im = Image.open("../images/DSC06772-51.JPG")
+from base_tools.time_cost import time_cost
 # 测试获取一块区域的图片
 # 测试图片的平均亮度
 
