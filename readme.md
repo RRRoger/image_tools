@@ -44,7 +44,6 @@ with open(source_path, 'rb') as f:
 | EXIF FNumber         | 光圈        | 显示7/5,需要手动处理成1.4 |
 | EXIF ISOSpeedRatings | iso         |                           |
 | EXIF LensModel       | 镜头信息    |                           |
-|                      |             |                           |
 
 ## 2. 批量写入exif信息到图片里
 

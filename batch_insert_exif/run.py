@@ -20,6 +20,7 @@ from PIL import ImageFont, ImageDraw, Image, ImageStat
 import exifread
 import os
 import click
+import piexif
 
 FONT = "SourceHanSansCN-Normal.otf"                # 思源字体
 QUALITY = 30                                       # 导出图片质量
@@ -114,7 +115,7 @@ def judge_font_color(img):
         return "Black"
 
 
-def do_write(source, dest, font_name=None, font_size=40, quality=50):
+def do_write(source, dest, font_name=None, font_size=40, quality=50, set_exit=False):
     
     print(f"********** Insert EXIF Info: {dest} ************")
 
@@ -141,12 +142,43 @@ def do_write(source, dest, font_name=None, font_size=40, quality=50):
         font_color = COLOR_WHITE
 
     draw.text(START_POSITION, show_text, font_color, font=font)
-    image.save(dest, quality=quality)
+    image.save(dest, format='JPEG', subsampling=0, quality=100)
+
+    if set_exit:
+        zeroth_ifd = {
+                    piexif.ImageIFD.Make: u"Canon",
+                    piexif.ImageIFD.XResolution: (96, 1),
+                    piexif.ImageIFD.YResolution: (96, 1),
+                    piexif.ImageIFD.Software: u"piexif"
+                    }
+        exif_ifd = {
+                    piexif.ExifIFD.DateTimeOriginal: u"2099:09:29 10:10:10",
+                    piexif.ExifIFD.LensMake: u"LensMake",
+                    piexif.ExifIFD.Sharpness: 65535,
+                    piexif.ExifIFD.LensSpecification: ((1, 1), (1, 1), (1, 1), (1, 1)),
+                    }
+        gps_ifd = {
+                piexif.GPSIFD.GPSVersionID: (2, 0, 0, 0),
+                piexif.GPSIFD.GPSAltitudeRef: 1,
+                piexif.GPSIFD.GPSDateStamp: u"1999:99:99 99:99:99",
+                }
+        first_ifd = {
+                    piexif.ImageIFD.Make: u"Canon",
+                    piexif.ImageIFD.XResolution: (40, 1),
+                    piexif.ImageIFD.YResolution: (40, 1),
+                    piexif.ImageIFD.Software: u"piexif"
+                    }
+        exif_dict = {"0th":zeroth_ifd, "Exif":exif_ifd, "GPS":gps_ifd, "1st":first_ifd}
+        exif_bytes = piexif.dump(exif_dict)
+        im = Image.open(dest)
+        im.save(dest, exif=exif_bytes)
+
+
 
 
 help_c = __doc__
 help_p = "修改处理的图片路径"
-help_q = f"导出的图片质量, 默认: {QUALITY}"
+help_q = f"[废弃] 图像质量, 默认: {QUALITY}"
 help_fs = f"字体大小, 默认: {FONT_SIZE}"
 help_font = f"选择字体, 默认: {FONT}"
 
