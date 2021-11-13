@@ -15,7 +15,7 @@
 
 手机上查看`Exif`我使用的是Exif Viewer Lite`这款App。如下图，能够看到照片的光圈、快门、iso，甚至当时拍摄的位置等信息。
 
-![](https://cdn.jsdelivr.net/gh/RRRoger/image_tools@main/images/WechatIMG2063.jpeg)
+![](https://cdn.jsdelivr.net/gh/ihatebeans/images@main/img/WechatIMG2063.jpeg)
 
 
 
@@ -100,7 +100,6 @@ def judge_font_color(img):
 
 ## 4. 处理后效果
 
-![](https://cdn.jsdelivr.net/gh/RRRoger/image_tools@main/images/after_exif_setting/DSC05247-21.JPG)
+![](https://cdn.jsdelivr.net/gh/ihatebeans/images@main/img/DSC07784-4.JPG)
 
-![](https://cdn.jsdelivr.net/gh/RRRoger/image_tools@main/images/after_exif_setting/IMG_9468.JPG)
-
+![](https://cdn.jsdelivr.net/gh/ihatebeans/images@main/img/DSC07404-7.JPG)
