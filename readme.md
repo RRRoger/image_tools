@@ -66,11 +66,15 @@ python run -h
 python run.py -p  /Users/chenpeng/Pictures/test_write_exif
 ```
 
-​    
+- 显示处理结果信息
+
+![](./images/show_result.jpg)
 
 - 处理后效果
 
-![](./images/after_exif_setting/DSC05247-21.JPG)
+![](./images/after_exif_setting/DSC07784-4.JPG)
 
-![](./images/after_exif_setting/IMG_9468.JPG)
+![](./images/after_exif_setting/DSC07404-7.JPG)
+
+
 
