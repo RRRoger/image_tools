@@ -24,6 +24,13 @@ import click
 import piexif
 import pickle
 import copy
+import rich
+from rich.progress import track
+from rich.console import Console
+from rich.table import Table
+
+console = Console()
+
 
 FONT = "SourceHanSansCN-Normal.otf"                # 思源字体
 QUALITY = 50                                       # 导出图片质量
@@ -170,7 +177,9 @@ def main(images_dir, quality, font_size, font_name):
     print("************* Start *************")
 
     fn_list = sorted([f for f in os.listdir(images_dir)])
-    for _i, fn in enumerate(fn_list):        
+    qty = len(fn_list)
+
+    for fn in track(fn_list, description=f"写入EXIF({qty} pics)..."):        
 
         # 判断文件是否是图片
         if not check_is_image(fn): continue
@@ -182,12 +191,21 @@ def main(images_dir, quality, font_size, font_name):
         do_write(f_path, dest_path, font_name=font_name, font_size=font_size, quality=quality)
 
     print("************* End *************")
+
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Item")
+    table.add_column("Note", style="green")
+    table.add_row("图片数量", f"{qty}")
+    table.add_row("原始图片路径", images_dir)
+    table.add_row("生成图片路径", dir_after)
+    table.add_row("图片质量", f"{quality}%")
+    table.add_row("字体大小", f"{font_size}")
+    table.add_row("字体", font_name)
+    console.print(table)
+
     return "OK"
 
 
 if __name__ == '__main__':
     main()
-
-
-
 
