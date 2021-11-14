@@ -14,6 +14,7 @@ Python Libraries:
     click: https://click-docs-zh-cn.readthedocs.io/zh/latest/
     exifread: https://pypi.org/project/ExifRead/
     Pillow: https://pillow.readthedocs.io/en/stable/
+    Rich: https://rich.readthedocs.io/en/stable/
 * * * * * * * * * * * * * * * * * * * * * * * * *
 """
 
